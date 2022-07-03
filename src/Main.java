@@ -26,7 +26,7 @@ public class Main {
 //        System.out.println(car9.toString());
 //        System.out.println(car10.toString());
 
-        int [] array = new int [10];
-    System.out.println(CarUtil.printArray(array));
+        int[] array = new int[CarUtil.arrayCapacity];
+        System.out.println(CarUtil.printArray(array));
     }
 }
