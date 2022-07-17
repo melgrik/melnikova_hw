@@ -1,6 +1,8 @@
-package Car;
+package domain;
 
-public class Car {
+import service.CarInterface;
+
+public class Car implements CarInterface, Comparable<Car> {
 
     public static int count = 0;
 
@@ -12,7 +14,7 @@ public class Car {
 
     private int doors;
 
-    private int power;
+    private int speed;
 
     private double fuelConsumption;
 
@@ -21,16 +23,12 @@ public class Car {
     public Car() {
     }
 
-//   // public Car(String brand) {
-//        this.brand = brand;
-//    }
-
-    public Car(String brand, String model, int yearOfCreation, int doors, int power, double fuelConsumption, double engineVolume) {
+    public Car(String brand, String model, int yearOfCreation, int doors, int speed, double fuelConsumption, double engineVolume) {
         this.brand = brand;
         this.model = model;
         this.yearOfCreation = yearOfCreation;
         this.doors = doors;
-        this.power = power;
+        this.speed = speed;
         this.fuelConsumption = fuelConsumption;
         this.engineVolume = engineVolume;
     }
@@ -67,12 +65,12 @@ public class Car {
         this.doors = doors;
     }
 
-    public int getPower() {
-        return power;
+    public int getSpeed() {
+        return speed;
     }
 
-    public void setPower(int power) {
-        this.power = power;
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 
     public double getFuelConsumption() {
@@ -100,7 +98,7 @@ public class Car {
 
         if (yearOfCreation != car.yearOfCreation) return false;
         if (doors != car.doors) return false;
-        if (power != car.power) return false;
+        if (speed != car.speed) return false;
         if (Double.compare(car.fuelConsumption, fuelConsumption) != 0) return false;
         if (Double.compare(car.engineVolume, engineVolume) != 0) return false;
         if (brand != null ? !brand.equals(car.brand) : car.brand != null) return false;
@@ -115,7 +113,7 @@ public class Car {
         result = 31 * result + (model != null ? model.hashCode() : 0);
         result = 31 * result + yearOfCreation;
         result = 31 * result + doors;
-        result = 31 * result + power;
+        result = 31 * result + speed;
         temp = Double.doubleToLongBits(fuelConsumption);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         temp = Double.doubleToLongBits(engineVolume);
@@ -125,16 +123,32 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car.Car{" +
+        return "Car{" +
                 "brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                 ", yearOfCreation=" + yearOfCreation +
                 ", doors=" + doors +
-                ", power=" + power +
+                ", speed=" + speed +
                 ", fuelConsumption=" + fuelConsumption +
                 ", engineVolume=" + engineVolume +
                 '}';
     }
 
+    @Override
+    public void run() {
+        System.out.println("RUN");
+    }
+
+    @Override
+    public int move() {
+        return speed;
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return this.getSpeed() - o.getSpeed();
+    }
 
 }
+
+
