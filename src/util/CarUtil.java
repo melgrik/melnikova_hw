@@ -1,4 +1,4 @@
-package Util;
+package util;
 import domain.Car;
 import java.util.Random;
 import static service.CarInterface.*;
@@ -8,6 +8,7 @@ public class CarUtil {
     public static Car[] generateCars(int arrayCapacity) {
        Car[] arrayCar = new Car[arrayCapacity];
         for (int i = 0; i < arrayCapacity; i++) {
+
           Car car = new Car();
 
           car.setBrand(generateBrand());
@@ -70,6 +71,18 @@ public class CarUtil {
         Random random = new Random();
         int n = random.nextInt(array.length);
         return (n);
-
     }
+
+//        private static String generateModel() {
+//        String [] arrayModel = {"M1","M2","M3","M4", "M5"};
+//        int arrayModelIndex = random(arrayModel.length);
+//        return(arrayModel[arrayModelIndex]);
+//    }
+//
+//        private static int random(int arrayLength) {
+//        Random random = new Random();
+//        int arrayIndex = random.nextInt(arrayLength);
+//        return (arrayIndex);
+//    }
+
 }
